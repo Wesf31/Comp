@@ -1,21 +1,35 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import PropTypes from 'prop-types'
+import { withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
+import router from './router/router'
+import { getProfileData } from './ducks/reducers/getProfileReducer'
+
 
 class App extends Component {
+  static propTypes = {
+    getProfileData: PropTypes.func.isRequired,
+    profileData: PropTypes.array.isRequired,
+  }
+  // 36I
+  componentDidMount() {
+    console.log('didmount')
+    this.props.getProfileData(this.props.profileData)
+  }
+  // 36F
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div>
+        { router }
       </div>
     );
   }
 }
+// basically what i wanted to do was make one axios call and set the state of the store and then just connect to my functional components.
+// I highly over estimated my ability.
+// take in props as param in connect function 36E
+const mapStateToProps = state => ({
+  profileData: state.getProfileData.profileData,
+})
 
-export default App;
+export default connect(mapStateToProps, { getProfileData })(App)
