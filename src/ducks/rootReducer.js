@@ -1,8 +1,7 @@
 import { combineReducers } from 'redux'
-import profileReducer from './reducers/getProfileReducer'
+import resultsReducer from './reducers/resultsReducer'
 
 const rootReducer = combineReducers({
-  profileReducer,
+  resultsReducer,
 })
-console.log('rootReducer')
 export default rootReducer

@@ -9,7 +9,6 @@ const express = require('express'),
 const app = express();
 
 app.use(cors())
-
 app.use(bodyParser.json());
 
 massive(process.env.DB_CONNECTION).then((db) => {

@@ -1,15 +1,8 @@
-const getProfile = (req, res) => {
+const getProfile = async (req, res) => {
   const db = req.app.get('db')
-  const params = req
-
-  db.get_profile([params.id])
-    .then((body) => {
-      res.status(200).send(body)
-    })
-    .catch((error) => {
-      console.log(error)
-      res.status(500).send()
-    })
+  await db.get_profile().then((response) => {
+    res.status(200).send(response)
+  })
 }
 
 module.exports = (app) => {

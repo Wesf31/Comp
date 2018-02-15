@@ -10,6 +10,7 @@
     "express": "^4.16.2",
     "express-session": "^1.15.6",
     "massive": "^4.6.3",
+    "material-ui": "^1.0.0-beta.33",
     "nodemon": "^1.14.11",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
@@ -27,7 +28,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "jest",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "server": "nodemon --watch server"
   },
   "devDependencies": {
     "eslint-config-airbnb": "^16.1.0",
