@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import { getProfileData } from './../ducks/reducers/resultsReducer'
 import DisplayProfile from './displayProfile'
 import CreateProfile from './createProfile'
@@ -27,5 +28,5 @@ const mapStateToProps = state => ({
   profileData: state.resultsReducer.profileData,
 })
 
-export default (connect(mapStateToProps, { getProfileData })(Home))
+export default withRouter((connect(mapStateToProps, { getProfileData })(Home)))
 

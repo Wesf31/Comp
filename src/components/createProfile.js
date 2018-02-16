@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import { connect } from 'react-redux'
 import Dropzone from 'react-dropzone';
-import { withRouter } from 'react-router-dom'
 import request from 'superagent'
 import withStyles from 'material-ui/styles/withStyles'
 import Button from 'material-ui/Button';
@@ -82,7 +81,6 @@ class CreateProfile extends Component {
           uploadedFileCloudinayrUrl: '',
           name: '',
         })
-        console.log(res.data)
         this.props.setProfileData(res.data)
       })
   }
