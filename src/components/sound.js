@@ -6,7 +6,6 @@ import Dialog, {
   DialogContentText,
   DialogTitle,
 } from 'material-ui/Dialog';
-import './sound.mp3'
 
 class AlertDialog extends React.Component {
   state = {
