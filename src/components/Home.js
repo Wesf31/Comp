@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux'
 import { getProfileData } from './../ducks/reducers/resultsReducer'
 import DisplayProfile from './displayProfile'
+import CreateProfile from './createProfile'
 
 class Home extends React.Component {
   state= {
@@ -13,10 +14,10 @@ class Home extends React.Component {
     const {
       profileData,
     } = this.props
-    console.log(profileData[0])
     return (
       <div>
-        <DisplayProfile profileData={profileData[0]} />
+        <CreateProfile />
+        <DisplayProfile profileData={profileData} />
       </div>
     )
   }

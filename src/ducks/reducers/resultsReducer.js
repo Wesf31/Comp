@@ -7,6 +7,11 @@ const initialState = {
 
 const GET_PROFILE_DATA = 'GET_PROFILE_DATA'
 
+export const setProfileData = profile => ({
+  type: GET_PROFILE_DATA,
+  payload: profile,
+})
+
 export const getProfileData = () => async (dispatch) => {
   let results = await axios.get('/api/profiles')
   return dispatch({
@@ -21,7 +26,6 @@ export default function reducer(state = initialState, action) {
     case GET_PROFILE_DATA:
       return { ...state, profileData: payload, profileDataLoaded: true }
     default:
-
       return state
   }
 }
