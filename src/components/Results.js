@@ -11,7 +11,7 @@ import { setProfileData } from './../ducks/reducers/resultsReducer'
 import UpdateProfile from './updateProfile'
 
 
-const DisplayProfile = ({
+const Results = ({
   profileData, classes, setProfileData, match,
 }) => {
   const deleteProfile = (userName) => {
@@ -62,8 +62,8 @@ const styles = {
   },
 };
 
-DisplayProfile.propTypes = {
+Results.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withRouter(connect(mapStateToProps, { setProfileData })(withStyles(styles)(DisplayProfile)))
+export default withRouter(connect(mapStateToProps, { setProfileData })(withStyles(styles)(Results)))
