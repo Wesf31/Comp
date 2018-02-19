@@ -7,19 +7,16 @@ const getProfile = async (req, res) => {
 
 const getSearch = async (req, res) => {
   const db = req.app.get('db')
-  await db.get_profile().then((response) => {
+  console.log(req.query)
+  const {
+    searchName,
+  } = req.query
+  await db.get_search([searchName]).then((response) => {
     res.status(200).send(response)
+  }).catch((error) => {
+    console.log(error)
+    res.status(500).send(error)
   })
-  // const db = req.app.get('db')
-  // const {
-  //   searchName,
-  // } = req.body.query.desc
-  // await db.get_search([searchName]).then((response) => {
-  //   res.status(200).send(response)
-  // }).catch((error) => {
-  //   console.log(error)
-  //   res.status(500).send(error)
-  // })
 }
 
 const deleteProfile = async (req, res) => {
@@ -70,5 +67,5 @@ module.exports = (app) => {
   app.post('/api/postProfile', createProfile)
   app.delete('/api/deleteProfile/:name', deleteProfile)
   app.put('/api/updateProfile', updateProfile)
-  app.get('api/search', getSearch)
+  app.get('/api/search', getSearch)
 }

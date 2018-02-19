@@ -28,14 +28,6 @@ function Animal(props) {
             Dogs are dope and everyone should love them.
               </Typography>
             </CardContent>
-            <CardActions>
-              <Button size="small" color="primary">
-            Share
-              </Button>
-              <Button size="small" color="primary">
-            Learn More
-              </Button>
-            </CardActions>
           </Card>
         </div>
         :
@@ -54,14 +46,6 @@ function Animal(props) {
             Cats are gross and no one should like them
               </Typography>
             </CardContent>
-            <CardActions>
-              <Button size="small" color="primary">
-            Share
-              </Button>
-              <Button size="small" color="primary">
-            Learn More
-              </Button>
-            </CardActions>
           </Card>
         </div>
         }
@@ -72,6 +56,7 @@ function Animal(props) {
 const styles = {
   card: {
     maxWidth: 345,
+    boxSizing: 'border-box',
   },
   media: {
     height: 200,

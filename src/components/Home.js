@@ -7,6 +7,7 @@ import green from 'material-ui/colors/green';
 import Button from 'material-ui/Button';
 import withStyles from 'material-ui/styles/withStyles';
 import TextField from 'material-ui/TextField';
+import Typography from 'material-ui/Typography';
 import axios from 'axios';
 import { getProfileData } from './../ducks/reducers/resultsReducer'
 import DisplayProfile from './displayProfile'
@@ -19,6 +20,7 @@ class Home extends React.Component {
     cat: false,
     name: 'dog',
     search: '',
+    searchResults: '',
   }
 
   handleChange = name => (event) => {
@@ -33,9 +35,12 @@ class Home extends React.Component {
     this.setState({ search: e.target.value })
   }
 
+  handleSubmit = () => {
+
+  }
   render() {
     const {
-      profileData, classes, history,
+      profileData, classes, history, state,
     } = this.props
     return (
       <div>
@@ -62,13 +67,33 @@ class Home extends React.Component {
           }
             label="Not Dogo"
           />
-          <Button className={classes.button} onClick={() => { history.push(`/${this.state.name}`) }} data-something="here I am">
+          <Button className={classes.button} onClick={() => { history.push(`/${this.state.name}`) }}>
         See picture of animal picked
           </Button>
+          <Typography>
+              Check to see if name is avaliable
+          </Typography>
           <TextField className="search" type="text" label="Search" onChange={e => this.searchHandler(e)} value={this.state.search} />
-          <Button className={classes.button} onClick={() => { axios.get('/api/search') }} data-something="here I am">
-        Search by name
+          <Button
+            className={classes.button}
+            onClick={() => {
+            axios.get(`/api/search?searchName=${this.state.search}`).then((response) => {
+              console.log(response)
+            if (response.data[0]) {
+              this.setState({ searchResults: 'Your desired name is taken' })
+            } else {
+              this.setState({ searchResults: 'Your desired name does not exist' })
+            }
+          })
+          }}
+          >
+        Search for name
           </Button>
+          <div>
+            <Typography>
+              {this.state.searchResults}
+            </Typography>
+          </div>
         </FormGroup>
         <DisplayProfile profileData={profileData} />
       </div>
