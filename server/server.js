@@ -4,7 +4,8 @@ const express = require('express'),
   bodyParser = require('body-parser'),
   session = require('express-session'),
   massive = require('massive'),
-  getProfile = require('./profileController')
+  getProfile = require('./profileController'),
+  getSearch = require(('./profileController'))
 
 
 const app = express();
@@ -25,5 +26,6 @@ app.use(session({
 app.use(express.static(`${__dirname}/../build`))
 
 getProfile(app)
+getSearch(app)
 
 app.listen(process.env.SERVER_PORT, () => { console.log(`Server listening on port ${process.env.SERVER_PORT}`) })

@@ -7,6 +7,7 @@ import green from 'material-ui/colors/green';
 import Button from 'material-ui/Button';
 import withStyles from 'material-ui/styles/withStyles';
 import TextField from 'material-ui/TextField';
+import axios from 'axios';
 import { getProfileData } from './../ducks/reducers/resultsReducer'
 import DisplayProfile from './displayProfile'
 import CreateProfile from './createProfile'
@@ -34,7 +35,7 @@ class Home extends React.Component {
 
   render() {
     const {
-      profileData, classes, doSomething, history,
+      profileData, classes, history,
     } = this.props
     return (
       <div>
@@ -61,11 +62,11 @@ class Home extends React.Component {
           }
             label="Not Dogo"
           />
-          <Button className={classes.button} onClick={(e) => { history.push(`/${this.state.name}`) }} data-something="here I am">
+          <Button className={classes.button} onClick={() => { history.push(`/${this.state.name}`) }} data-something="here I am">
         See picture of animal picked
           </Button>
           <TextField className="search" type="text" label="Search" onChange={e => this.searchHandler(e)} value={this.state.search} />
-          <Button className={classes.button} onClick={(e) => { history.push(`/${this.state.name}`) }} data-something="here I am">
+          <Button className={classes.button} onClick={() => { axios.get('/api/search') }} data-something="here I am">
         Search by name
           </Button>
         </FormGroup>
