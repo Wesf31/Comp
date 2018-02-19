@@ -66,7 +66,6 @@ class CreateProfile extends Component {
   };
   handleSubmit(e) {
     e.preventDefault()
-    console.log()
     let {
       uploadedFileCloudinayrUrl,
       name,
