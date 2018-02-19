@@ -57,6 +57,7 @@ const styles = {
   card: {
     maxWidth: 345,
     boxSizing: 'border-box',
+    margin: 10,
   },
   media: {
     height: 200,
