@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import router from './router/router'
-import { getProfileData } from './ducks/reducers/resultsReducer'
+import { getProfileData } from './ducks/reducers/resultsReducer'f
 import NavBar from './components/NavBar'
 
 
